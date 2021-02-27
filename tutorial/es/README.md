@@ -139,23 +139,25 @@ Veremos que lo que nos devuelve no es HTML, sino un formato llamado JSON.
 ```python
 >>> r.headers
 
-HTTP/1.1 404 Not Found
-X-Powered-By: Express
-Expires: -1
-Content-Type: text/html; charset=utf-8
-Content-Length: 0
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 12:43:18 GMT
-Connection: keep-alive
+{'Server': 'Cowboy', 
+'Connection': 'keep-alive', 
+'X-Powered-By': 'Express', 
+'Expires': '-1', 
+'Content-Type': 'text/html; charset=utf-8', 
+'Content-Length': '0',
+'Etag': 'W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"', 
+'Vary': 'Accept-Encoding',
+'Date': 'Sat, 27 Feb 2021 19:14:21 GMT', 
+'Via': '1.1 vegur'}
 ```
 
-Como dijimos antes, una conversación no se trata de la simple enunciación de palabras al azar. Existe un intercambio regulado o normado para este intercambio, donde es de esperar una estructura simple de enunciaciones/preguntas y respuestas.
+Como dijimos antes, una conversación no se trata de la simple enunciación de palabras al azar. Existe un intercambio regulado o normado, donde es de esperar una estructura simple de enunciaciones/preguntas y respuestas. 
 
+> En este caso ¿de qué tipo de respuesta se trata? Si tuvieras que expresarlo en emojis ¿Qué emoji es el 400?
 
+> ✍️ Autoevaluación: ¿Para qué sirve el método `headers`? ¿Que nos permitió? 
 
-> ✍️ Autoevaluación: ¿Para qué sirve el flag `-i`? ¿Que nos permitió? Contratá tu respuesta con el lo que dice `curl --help`
-
-> 🏅 Desafío: contrastá con lo que sucede al hacer `curl 'https://macowins-server.herokuapp.com/prendas/1' -i`
+> 🏅 Desafío: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué respuesta obtuviste? ¿Qué emoji le pondrías a esta respuesta?
 
 <details>
   <summary>Respuesta</summary>
