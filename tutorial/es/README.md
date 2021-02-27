@@ -157,7 +157,7 @@ Como dijimos antes, una conversación no se trata de la simple enunciación de p
 
 > ✍️ Autoevaluación: ¿Para qué sirve el método `headers`? ¿Que nos permitió? 
 
-> 🏅 Desafío: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué respuesta obtuviste? ¿Qué emoji le pondrías a esta respuesta?
+> 🏅 Desafío III: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué respuesta obtuviste? ¿Qué emoji le pondrías a esta respuesta?
 
 <details>
   <summary>Respuesta</summary>
