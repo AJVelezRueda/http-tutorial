@@ -75,10 +75,22 @@ Cada recurso de la web es localizable gracias a un identificador unívoco llamad
 
 Para empezar, intentemos establecer nuestra primera comunicación con un servidor, para romper el hielo de esta conversación 🤣
 
-Vamos a hacer nuestro primer pedido:
+
+Vamos a hacer nuestro primer pedido, para ello usaremos la biblioteca <a href="https://2.python-requests.org/es/latest/user/quickstart.html">**requests**</a> de Python. Podes instalarala haciendo:
+
 
 ```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas/1'
+$ pip install requests
+
+```
+
+Luego desde el intérprete de python podremos hacer finalmente nuestro primer pedido:
+
+
+```python
+>>> import requests
+>>> r = requests.get('https://macowins-server.herokuapp.com/prendas/1')
+>>> r.json()
 {
   "id": 1,
   "tipo": "pantalon",
@@ -86,14 +98,19 @@ $ curl 'https://macowins-server.herokuapp.com/prendas/1'
 }
 ```
 
-Veremos que lo que nos devuelve no es HTML, sino un formato llamado JSON
+Veremos que lo que nos devuelve no es HTML, sino un formato llamado JSON.  
 
-> 🤔 Para pensar: ¿por qué devolver JSON? ¿Quién puede leerlo? ¿A quién le sirve?
+>
+>📚 Para indagar: ¿Sabés qué es HTML? Si aún no conoces este tipo de lenguaje hacé Ctr+u y observalo _in situ_
+>
+> 🤔 Para pensar: ¿Qué características tiene este formato? ¿Qué tipo de datos puede soportar? ¿por qué devolver JSON? ¿Quién puede leerlo? ¿A quién le sirve?
 
-Ahora hagamos otro pedido para traer a la prenda `20`:
+
+
+
+>🏅 DESAFIO I: Ahora te toca a vos, hacé otro pedido para traer a la prenda `20`. Deberías obtener el siguiente resultado:
 
 ```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas/20'
 {
   "id": 20,
   "tipo": "saco",
@@ -101,26 +118,27 @@ $ curl 'https://macowins-server.herokuapp.com/prendas/20'
 }
 ```
 
-> ✍️ Autoevaluación: ¿para qué sirve CURL?
-
 ## 2. Códigos de respuesta
 
-¿Cuántas prendas existirán? ¿Existirá la prenda 400?
+ ¿Cuántas prendas existirán? ¿Existirá la prenda 400?
 
-> 🏅 Desafío: ¡averigualo! Hacé `curl 'https://macowins-server.herokuapp.com/prendas/400'` y observá qué sucede.
+> 🏅 Desafío II: ¡averigualo! Hacé `requests.get('https://macowins-server.herokuapp.com/prendas/400')` y observá qué sucede.
 
 <details>
   <summary>Respuesta</summary>
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas/400'
+```python
+  >>> import requests
+  >>> r = requests.get('https://macowins-server.herokuapp.com/prendas/400')
+  >>> r.json()
 ```
 </details>
 
 ¡Momento! ¿Será un error? ¿Habrá forma de saberlo a ciencia cierta?
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas/400' -i
+```python
+>>> r.headers
+
 HTTP/1.1 404 Not Found
 X-Powered-By: Express
 Expires: -1
@@ -130,6 +148,10 @@ Vary: Accept-Encoding
 Date: Tue, 21 Apr 2020 12:43:18 GMT
 Connection: keep-alive
 ```
+
+Como dijimos antes, una conversación no se trata de la simple enunciación de palabras al azar. Existe un intercambio regulado o normado para este intercambio, donde es de esperar una estructura simple de enunciaciones/preguntas y respuestas.
+
+
 
 > ✍️ Autoevaluación: ¿Para qué sirve el flag `-i`? ¿Que nos permitió? Contratá tu respuesta con el lo que dice `curl --help`
 
