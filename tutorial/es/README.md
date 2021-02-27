@@ -34,7 +34,9 @@ Los protocolos, como verás, forman parte de nuestras vidas más de lo que pens�
 
 Este conjunto de reglas de comunicación, implícitas o explícitas, se denomina protocolo y en Internet hay uno específico para establecer la comunicación entre servidores y clientes. Este protocolo fue creado para la transferencia de archivos hipertextuales y se llama justamente HTTP, por las siglas en inglés de protocolo de transferencia de hipertexto (HyperText Transfer Protocol).
 
+
 👇🏽 Vamos a ver un poco de qué se trata
+
 
 # Tutorial HTTP
 - [Tutorial HTTP](#tutorial--http)
@@ -59,17 +61,21 @@ Este conjunto de reglas de comunicación, implícitas o explícitas, se denomina
   * [20. Requests condicionales](#20-requests-condicionales)
   * [21. Contenido estático y dinámico](#21-contenido-estatico-y-dinamico)
 
-> 🏁 Antes de empezar: ¿qué es una arquitectura cliente-servidor? ¿cómo funciona?
+> 🏁 Antes de empezar, repasemos: ¿qué es una arquitectura cliente-servidor? ¿cómo funciona? ¿Cuál es el cliente por antomasia de la Web?
 >
-> 🏁 Antes de empezar: ¿qué es un cliente? ¿y un servidor? ¿Cuál es el cliente por antomasia de la Web?
+> 🤔 Para pensar: ¿qué tecnologías se usan en la Web? ¿En qué se desarrolla un cliente? ¿Y un servidor?
 >
-> 🏁 Antes de empezar: ¿qué tecnologías se usan en la Web? ¿En qué se desarrolla un cliente? ¿Y un servidor?
->
-> 🏁 Antes de empezar: ¿Cuál es la diferencia entre un sitio Web y una API web?
+>📚 Para indagar antes de empezar: ¿Cuál es la diferencia entre un sitio Web y una API web?
 
 ## 1. Primeros pedidos
 
-Hagamos nuestro primer pedido:
+Cada recurso de la web es localizable gracias a un identificador unívoco llamado URL, por las siglas en inglés de Localizador Uniforme de Recurso (Uniform Resource Locator). Las URL nos dan tanto la ubicación de un recurso como la manera de conseguirlo. 
+
+> 🤔 Para pensar: ¿a qué corresponde cada parte de una URL? 
+
+Para empezar, intentemos establecer nuestra primera comunicación con un servidor, para romper el hielo de esta conversación 🤣
+
+Vamos a hacer nuestro primer pedido:
 
 ```bash
 $ curl 'https://macowins-server.herokuapp.com/prendas/1'
@@ -96,8 +102,6 @@ $ curl 'https://macowins-server.herokuapp.com/prendas/20'
 ```
 
 > ✍️ Autoevaluación: ¿para qué sirve CURL?
-
-> 🤔 Para pensar: ¿qué es una dirección? ¿Te suena el término URL? ¿Por qué `curl` se llamará así?
 
 ## 2. Códigos de respuesta
 
