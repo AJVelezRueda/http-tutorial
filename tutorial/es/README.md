@@ -157,35 +157,31 @@ Como dijimos antes, una conversación no se trata de la simple enunciación de p
 
 > ✍️ Autoevaluación: ¿Para qué sirve el método `headers`? ¿Que nos permitió? 
 
-> 🏅 Desafío III: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué respuesta obtuviste? ¿Qué emoji le pondrías a esta respuesta?
+> 🏅 Desafío III: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué te devuelve el método headers? 
 
 <details>
   <summary>Respuesta</summary>
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas/1' -i
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-Content-Type: application/json; charset=utf-8
-Content-Length: 50
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 12:42:26 GMT
-Connection: keep-alive
+```python
+  >>> import requests
+  >>> r = requests.get('https://macowins-server.herokuapp.com/prendas/400')
+  >>> r.headers
 
-{
-  "id": 1,
-  "tipo": "pantalon",
-  "talle": 35
-}
+{'Server': 'Cowboy', 
+'Connection': 'keep-alive', 
+'X-Powered-By': 'Express', 
+'Expires': '-1', 
+'Content-Type': 'application/json; charset=utf-8', 
+'Content-Length': '50', 
+'Etag': 'W/"32-i8e+gZ5GUBVXp/2hTq5pj1i9+f8"', 
+'Vary': 'Accept-Encoding', 'Date': 'Sat, 27 Feb 2021 18:11:12 GMT',
+'Via': '1.1 vegur'}
 ```
 </details>
 
-> 🤔 Para pensar: ¿Qué cambió? ¿Qué cambio o cambios te parecen relevates entre ambas respuestas?
+> 🤔 Para pensar: ¿Qué cambió? ¿Qué cambio o cambios te parecen relevates entre ambas respuestas? ¿Qué emoji le pondrías a esta respuesta?
 
-> 💡 Tip: Probá hacer `curl 'https://macowins-server.herokuapp.com/prendas/400' -is | head -n1`
-
-> 🏅 Desafío: ¿y que sucederá si consultamos a una dirección que no existe, como por ejemplo `https://macowins-server.herokuapp.com/prindas/1`? ¡Averigualo!
+> 🏅 Desafío IV: ¿y que sucederá si consultamos a una dirección que no existe, como por ejemplo `https://macowins-server.herokuapp.com/prindas/1`? ¡Averigualo!
 
 <details>
   <summary>Respuesta</summary>
