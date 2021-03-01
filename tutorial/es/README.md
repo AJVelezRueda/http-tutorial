@@ -28,7 +28,7 @@ En lugar de comprar y mantener servidores y centros de datos físicos(es decir u
 
 [4. Protocolos de comunicación](#4-protocolos)
 
-¿Alguna vez te preguntaste cómo es que logramos comunicarnos los seres humanos? ¿Cómo es que las palabras pueden estructurarse en conversaciones ordenadas? Bueno tal y como explica el Dr. Juan Eduardo Bonnin,<a href="https://www.youtube.com/watch?v=jrA70HwWnts&t=9s">en su video</a>, los seres humanos somos capaces de estructurar las palabras, y estas en oraciones que devienen en conversaciones. En este proceso se pone en juego no solo cuestiones ficiológicas, sino también cuestiones culturales y personales, como: la lengua, las normas sociales, los valores culturales, los intereses y propósitos individuales. Por tanto, lo que pensamos como un simple intercambio de palabras, se convierte en una actividad compleja, matizada con el ritmo de todo esta información extra...o meta 😝
+¿Alguna vez te preguntaste cómo es que logramos comunicarnos los seres humanos? ¿Cómo es que las palabras pueden estructurarse en conversaciones ordenadas? Bueno tal y como explica el Dr. Juan Eduardo Bonnin, <a href="https://www.youtube.com/watch?v=jrA70HwWnts&t=9s">en su video</a>, los seres humanos somos capaces de estructurar las palabras, y estas en oraciones que devienen en conversaciones. En este proceso se pone en juego no solo cuestiones ficiológicas, sino también cuestiones culturales y personales, como: la lengua, las normas sociales, los valores culturales, los intereses y propósitos individuales. Por tanto, lo que pensamos como un simple intercambio de palabras, se convierte en una actividad compleja, matizada con el ritmo de todo esta información extra...o meta 😝
 
 Los protocolos, como verás, forman parte de nuestras vidas más de lo que pensábamos. Y estos pueden variar según el entorno en el que nos movemos. Cada ámbito posee sus propias reglas para la comunicación. No nos expresamos de igual modo cuando estamos en un recital, que cuando estamos en la facultad ¿No? 🙏
 
@@ -43,23 +43,20 @@ Este conjunto de reglas de comunicación, implícitas o explícitas, se denomina
   * [1. Primeros pedidos](#1-primeros-pedidos)
   * [2. Códigos de respuesta](#2-codigos-de-respuesta)
   * [3. Parámetros](#3-parametros)
-  * [4. Paginación](#4-paginacion)
-  * [6. URLs y URIs](#6-urls-y-uris)
-  * [7. Resolución de dominios](#7-resolucion-de-dominios)
-  * [8. Cabeceras](#8-cabeceras)
-  * [9. Compresión](#9-compresion)
-  * [10. Desde el navegador](#10-desde-el-navegador)
-  * [11. Borrando contenido](#11-borrando-contenido)
-  * [12. Creando y actualizando contenido](#12-creando-y-actualizando-contenido)
-  * [13. Sobre la semántica de los verbos](#13-sobre-la-semantica-de-los-verbos)
-  * [14. Recursos](#14-recursos)
-  * [15. Paréntesis: servidores y despliegue](#15-parentesis-servidores-y-despliegue)
-  * [16. Redirecciones](#16-redirecciones)
-  * [17. Seguridad](#17-seguridad)
-  * [18. HTTP es stateless](#18-http-es-stateless)
-  * [19. Negociación de contenido](#19-negociacion-de-contenido)
-  * [20. Requests condicionales](#20-requests-condicionales)
-  * [21. Contenido estático y dinámico](#21-contenido-estatico-y-dinamico)
+  * [4. URLs y URIs](#6-urls-y-uris)
+  * [5. Resolución de dominios](#7-resolucion-de-dominios)
+  * [6. Cabeceras](#8-cabeceras)
+  * [7. Borrando contenido](#11-borrando-contenido)
+  * [8. Creando y actualizando contenido](#12-creando-y-actualizando-contenido)
+  * [9. Sobre la semántica de los verbos](#13-sobre-la-semantica-de-los-verbos)
+  * [10. Recursos](#14-recursos)
+  * [11. Paréntesis: servidores y despliegue](#15-parentesis-servidores-y-despliegue)
+  * [12. Redirecciones](#16-redirecciones)
+  * [13. Seguridad](#17-seguridad)
+  * [14. HTTP es stateless](#18-http-es-stateless)
+  * [15. Negociación de contenido](#19-negociacion-de-contenido)
+  * [16. Requests condicionales](#20-requests-condicionales)
+  * [17. Contenido estático y dinámico](#21-contenido-estatico-y-dinamico)
 
 > 🏁 Antes de empezar, repasemos: ¿qué es una arquitectura cliente-servidor? ¿cómo funciona? ¿Cuál es el cliente por antomasia de la Web?
 >
@@ -106,9 +103,9 @@ Veremos que lo que nos devuelve no es HTML, sino un formato llamado JSON.
 > 🤔 Para pensar: ¿Qué características tiene este formato? ¿Qué tipo de datos puede soportar? ¿por qué devolver JSON? ¿Quién puede leerlo? ¿A quién le sirve?
 
 
+¡Ahora te toca a vos¡
 
-
->🏅 DESAFIO I: Ahora te toca a vos, hacé otro pedido para traer a la prenda `20`. Deberías obtener el siguiente resultado:
+>🏅 DESAFIO I: Hacé otro pedido para traer a la prenda `20`. Deberías obtener el siguiente resultado:
 
 ```bash
 {
@@ -186,8 +183,10 @@ Como dijimos antes, una conversación no se trata de la simple enunciación de p
 <details>
   <summary>Respuesta</summary>
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prindas/1' -i
+```python
+  >>> import requests
+  >>> r = requests.get('https://macowins-server.herokuapp.com/prindas/1')
+  >>> r.headers
 HTTP/1.1 404 Not Found
 ....
 ```
@@ -195,49 +194,54 @@ HTTP/1.1 404 Not Found
 
 `404` y `200` son códigos de estado (_status code_, también llamados a veces _códigos de respuesta_) y forman parte de toda respuesta HTTP.
 
-> ✍️ Autoevaluación: ¿qué es un status code y para qué me sirve?
+> ✍️ Autoevaluación: ¿qué es un status code y para qué me sirve? 
 
 Veamos otro código de respuesta más, que nos permitirá usar una funcionalidad que es _muy muy nueva y que quizás aún no ande bien_:
 
 ```bash
-$ curl 'https://macowins-server.herokuapp.com/nueva-funcionalidad-que-a-veces-no-anda-bien' -i
-HTTP/1.1 500 Internal Server Error
-X-Powered-By: Express
-Vary: Origin, Accept-Encoding
-Access-Control-Allow-Credentials: true
-Cache-Control: no-cache
-Pragma: no-cache
-Expires: -1
-Content-Security-Policy: default-src 'none'
-X-Content-Type-Options: nosniff
-Content-Type: text/html; charset=utf-8
-Content-Length: 1594
-Date: Tue, 21 Apr 2020 12:51:17 GMT
-Connection: keep-alive
+>>> r = requests.get('https://macowins-server.herokuapp.com/nueva-funcionalidad-que-a-veces-no-anda-bien')
+>> r.headers
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Error</title>
-</head>
-<body>
-<pre>TypeError: req.ups is not a function<br> &nbsp; &nbsp;at module.exports (/home/usuario/Documents/http-tutorial/server/internal-error.js:3:9)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (/home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/index.js:317:13)<br> &nbsp; &nbsp;at /home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/index.js:284:7<br> &nbsp; &nbsp;at Function.process_params (/home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/index.js:335:12)<br> &nbsp; &nbsp;at next (/home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/index.js:275:10)<br> &nbsp; &nbsp;at module.exports (/home/usuario/Documents/http-tutorial/server/not-found.js:12:3)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (/home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/index.js:317:13)<br> &nbsp; &nbsp;at /home/usuario/.nvm/versions/node/v10.20.1/lib/node_modules/json-server/node_modules/express/lib/router/index.js:284:7</pre>
-</body>
-</html>
+{'Server': 'Cowboy', 
+'Connection': 'keep-alive',
+ 'X-Powered-By': 'Express', 
+ 'Vary': 'Origin, Accept-Encoding', 
+ 'Access-Control-Allow-Credentials': 'true', 
+ 'Cache-Control': 'no-cache', 
+ 'Pragma': 'no-cache', 
+ 'Expires': '-1', 
+ 'Content-Security-Policy': "default-src 'none'", 
+ 'X-Content-Type-Options': 'nosniff',
+ 'Content-Type': 'text/html; charset=utf-8', 
+ 'Content-Length': '148', 
+ 'Date': 'Mon, 01 Mar 2021 20:18:38 GMT', 
+ 'Via': '1.1 vegur'}
+
+>>> r.content
+b'<!DOCTYPE html>
+  <html lang="en">
+      <head>
+      <meta charset="utf-8">
+        <title>Error</title>
+      </head>
+      <body>
+        <pre>Internal Server Error</pre>
+      </body>
+  </html>'
 ```
 
 ¡Ups! 🙈
 
-> ✍️ Autoevaluación: ¿qué representa el código `500`?
+> ✍️ Autoevaluación: ¿qué representa el código `500`? ¿Por qué tenemos que hacer _r.contents_ además de _r.headers_? ¿Qué partes puede tener un mensaje HTTP? ¿Qué partes deben estar presentes y cuáles no? ¿En qué casos?
 
 
 ## 3. Parámetros
 
 Hagamos un nuevo pedido, pero ahora a una _ruta_ ligeramente diferente:
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas'
+```python
+>>> r = requests.get('https://macowins-server.herokuapp.com/prendas')
+>>> r.json()
 [
   {
     "id": 1,
@@ -278,16 +282,17 @@ $ curl 'https://macowins-server.herokuapp.com/prendas'
 ]
 ```
 
-> 🤔 Para pensar: ¿es lo mismo consultar `/prendas/` que `/prendas/1`? ¿En qué se diferencian?
+> 🤔 Para pensar: ¿es lo mismo consultar `/prendas/` que `/prendas/1`? ¿En qué se diferencian? ¿Qué ocurre si hacemos _r.content_? ¿Por qué?
 
 > 🤔 Para pensar: ¿qué hará `/ventas/2`? ¿`/ventas/`?.
 
-> 🏅 Desafío: hacé `curl 'https://macowins-server.herokuapp.com/ventas'` y `curl 'https://macowins-server.herokuapp.com/ventas/2'` y contrastá el resultado con tu respuesta anterior
+> 🏅 Desafío: hacé `requests.get('https://macowins-server.herokuapp.com/ventas')` y `requests.get('https://macowins-server.herokuapp.com/ventas/2)'` y contrastá el resultado con tu respuesta anterior
 
 Este listado es muy completo, pero por eso también puede ser engorroso para usar. Quizás podríamos traer sólo una parte así...
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas?tipo=pantalon'
+```python
+>>> r = requests.get('https://macowins-server.herokuapp.com/prendas?tipo=pantalon')
+>>> r.json()
 [
   {
     "id": 1,
@@ -310,8 +315,8 @@ $ curl 'https://macowins-server.herokuapp.com/prendas?tipo=pantalon'
 
 ...o así:
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas?tipo=saco'
+```python
+>>> r = requests.get('https://macowins-server.herokuapp.com/prendas?tipo=saco')
 [
   {
     "id": 16,
@@ -347,8 +352,8 @@ $ curl 'https://macowins-server.herokuapp.com/prendas?tipo=saco'
 
 Es común que las APIs que admiten parámetros soporten más de uno, por ejemplo:
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas?talle=40'
+```python
+>>> r = requests.get('https://macowins-server.herokuapp.com/prendas?talle=40')
 [
   {
     "id": 6,
@@ -360,8 +365,9 @@ $ curl 'https://macowins-server.herokuapp.com/prendas?talle=40'
 
 Además, los parámetros además se pueden combinar, utilizando el signo `&` (se llama _et_, aunque en informática es más común escucharlo por su nombre en inglés _ampersand_)
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas?talle=40&tipo=pantalon'
+```python
+>>> r = requests.get('https://macowins-server.herokuapp.com/prendas?talle=40&tipo=pantalon')
+>>> r.json()
 [
   {
     "id": 6,
@@ -375,199 +381,8 @@ $ curl 'https://macowins-server.herokuapp.com/prendas?talle=40&tipo=pantalon'
 
 > ✍️ Autoevaluación: ¿Para qué sirven los parámetros?
 
-## 4. Paginación
 
-Volvamos a `curl 'https://macowins-server.herokuapp.com/prendas'`. ¿Qué pasaría si este listado fuera muy grande? ## TODO simular que creamos muchos productos. O usar ventas
-
-> 🤔 Para pensar: ¿Qué problemas tiene esto?
-
-Ejecutemos nuevamente...
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas' -i
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-Content-Type: application/json; charset=utf-8
-Content-Length: 1237
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 13:05:09 GMT
-Connection: keep-alive
-
-[
-  {
-    "id": 1,
-    "tipo": "pantalon",
-    "talle": 35
-  },
-  {
-    "id": 2,
-    "tipo": "pantalon",
-    "talle": 36
-  },
-...
-```
-
-...pero esta vez prestemos atención a esta parte de la respuesta...
-
-```
-Content-Length: 794
-```
-
-> 💡 Tip:  Probá hacer `curl 'https://macowins-server.herokuapp.com/prendas' -is | grep 'Content-Length'`
-
-...y comparemos el resultado con el de:
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas' -i
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-Content-Type: application/json; charset=utf-8
-Content-Length: 73800
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 13:06:18 GMT
-Connection: keep-alive
-
-[
-  {
-    "id": 1,
-    "producto": {
-      "id": 19,
-      "tipo": "saco",
-      "talle": "L"
-    },
-    "fecha": "1970-02-06T12:00:00.000Z"
-  },
-...
-```
-
-> 🤔 Para pensar: ¿Cual es mayor? ¿Por qué? ¿Qué problema puede representar esto?
-
-Como se observa, tienen tamaños diferentes: a mayor la cantidad de elementos, mayor es la respuesta, y "más pesada" es.
-
-> 🤔 Para pensar: ¿Cuál será más rápido de descargar? ¿Por qué?
-
-Ya sea porque la respuesta es demasiado "pesada", o porque simplemente sólo queremos una parte de la misma, en ocasiones querremos recorrer el resultado como
-si fueran las páginas de un libro: de una a la vez. Por eso Macowins nos permite utilizar un parámetro llamado `_page`, con el que podemos decirle qué número de página queremos.
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas/?_page=1' -i
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-X-Total-Count: 500
-Access-Control-Expose-Headers: X-Total-Count, Link
-Link: <https://macowins-server.herokuapp.com/ventas/?_page=1>; rel="first", <https://macowins-server.herokuapp.com/ventas/?_page=2>; rel="next", <https://macowins-server.herokuapp.com/ventas/?_page=50>; rel="last"
-Content-Type: application/json; charset=utf-8
-Content-Length: 1456
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 13:07:23 GMT
-Connection: keep-alive
-
-[
-  {
-    "id": 1,
-    "producto": {
-      "id": 19,
-      "tipo": "saco",
-      "talle": "L"
-    },
-    "fecha": "1970-02-06T12:00:00.000Z"
-  },
-  {
-    "id": 2,
-    "producto": {
-      "id": 13,
-      "tipo": "remera",
-      "talle": "M"
-    },
-    "fecha": "1970-03-15T00:00:00.000Z"
-  },
-  ...
-  {
-    "id": 9,
-    "producto": {
-      "id": 4,
-      "tipo": "pantalon",
-      "talle": 38
-    },
-    "fecha": "1970-11-25T12:00:00.000Z"
-  },
-  {
-    "id": 10,
-    "producto": {
-      "id": 7,
-      "tipo": "pantalon",
-      "talle": 41
-    },
-    "fecha": "1971-01-01T00:00:00.000Z"
-  }
-]
-```
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas/?_page=2' -i
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-X-Total-Count: 500
-Access-Control-Expose-Headers: X-Total-Count, Link
-Link: <https://macowins-server.herokuapp.com/ventas/?_page=1>; rel="first", <https://macowins-server.herokuapp.com/ventas/?_page=1>; rel="prev", <https://macowins-server.herokuapp.com/ventas/?_page=3>; rel="next", <https://macowins-server.herokuapp.com/ventas/?_page=50>; rel="last"
-Content-Type: application/json; charset=utf-8
-Content-Length: 1464
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 13:07:51 GMT
-Connection: keep-alive
-
-[
-  {
-    "id": 11,
-    "producto": {
-      "id": 8,
-      "tipo": "pantalon",
-      "talle": 42
-    },
-    "fecha": "1971-02-06T12:00:00.000Z"
-  },
-....
-```
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas/?_page=3' -i
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-X-Total-Count: 500
-Access-Control-Expose-Headers: X-Total-Count, Link
-Link: <https://macowins-server.herokuapp.com/ventas/?_page=1>; rel="first", <https://macowins-server.herokuapp.com/ventas/?_page=2>; rel="prev", <https://macowins-server.herokuapp.com/ventas/?_page=4>; rel="next", <https://macowins-server.herokuapp.com/ventas/?_page=50>; rel="last"
-Content-Type: application/json; charset=utf-8
-Content-Length: 1467
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 13:09:14 GMT
-Connection: keep-alive
-
-[
-  {
-    "id": 21,
-    "producto": {
-      "id": 6,
-      "tipo": "pantalon",
-      "talle": 40
-    },
-    "fecha": "1972-02-06T12:00:00.000Z"
-  },
-....
-```
-
-> 🤔 Para pensar: observá las fechas de venta. ¿Tendrá alguna relación el número de página con la fecha de venta en Macowins?
-
-> 📝 Nota: de la misma forma que que no todos los sitios soportarán los parámetros `talle` o `tipo`, tampoco todos soportarán `_page`
-
-> 🏅 Desafío: ¿cuando pesan las páginas ahora? ¿Más o menos que todas las ventas?
-
-
-## 6. URLs y URIs
+## 4. URLs y URIs
 
 Pero ¿qué es `https://macowins-server.herokuapp.com/ventas/?_page=3`? Informalmente le diremos dirección, aunque su nombre técnico es URL.
 
@@ -593,25 +408,29 @@ no sea muy util (o al menos no el año 2020 🧠)
 > ✍️ Autoevaluación: ¿es el string _tutoriales://http/introductorio#7_ una URI? ¿Y una URL?
 
 
-## 7. Resolución de dominios
+## 5. Resolución de dominios
 
 > 🤔 Para pensar: ¿Qué ocurrirá si hacemos un pedido a un dominio inexistente? ¿Qué código de estado HTTP obtendremos?
 
 Observemos los siguientes pedidos:
 
-```bash
-$ curl 'http://localhost:300
-curl: (7) Failed to connect to localhost port 300: Connection refused
+```python
+requests.get('http://localhost:300')
+raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=300): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb528ea62e8>: Failed to establish a new connection: [Errno 111] Connection refused',))
 ```
 
-```bash
-$ curl 'http://unSitioQueProbablementeNoExistaEnInternet
-curl: (6) Could not resolve host: unSitioQueProbablementeNoExistaEnInternet
+```python
+>>> requests.get('http://unSitioQueProbablementeNoExistaEnInternet')
+raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='unsitioqueprobablementenoexistaeninternet', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb528e84a90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+
 ```
 
-```bash
-$ curl 'http://google.com:8902' -i --connect-timeout 5
-curl: (28) Connection timed out after 5000 milliseconds
+```python
+>>> requests.get('http://google.com:8902',timeout=5)
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='google.com', port=8902): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb5297f3cc0>: Failed to establish a new connection: [Errno 101] Network is unreachable',))
 ```
 
 ¡Ups! En un caso no pudo resolver el dominio, y en el otro, no había nada escuchando en el puerto.
@@ -659,7 +478,7 @@ rtt min/avg/max/mdev = 12.928/24.245/29.843/6.650 ms
 
 > 🏅 Desafío: ¿a través de qué IP accedés a google desde tu computadora?
 
-## 8. Cabeceras
+## 6. Cabeceras
 
 Antes ya aparecieron. Formalicemos
 
@@ -702,89 +521,15 @@ Algunas de estas no las entenderemos. Pero las que sí nos dan información rele
 
 > ✍️ Autoevaluación: ¿Para qué sirven las cabeceras? Mencioná al menos dos.
 
-## 9. Compresión
 
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas' -i
-```
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas' -i -H "Accept-Encoding: gzip"
-X-Powered-By: Express
-Expires: -1
-Content-Type: application/json; charset=utf-8
-Vary: Accept-Encoding
-Content-Encoding: gzip
-Date: Tue, 21 Apr 2020 13:10:58 GMT
-Connection: keep-alive
-Transfer-Encoding: chunked
-
-^_<8B>^H^@^@^@^@^@^@^C<BD><9D>ˊ&<C7>^QF<F7>z<8A>a<D6>jS<91><F7><D4>3<D8>+kal<BC>^X<A4>1^VH<9A>a,<AF><8C><DF><DD>^?U<FA>^F<BF><BB><BE><D3><F8>#a<B4>Pk^PAT<D6><C9>Ȍ:^]^?<F8><EA>ݻ<BF>=<FE>y<F7><EE><FD>^O߿<FF><E6>]|<BD><FE><E5><F3><97>O<DF><FF><F5><BB>_>=~<B4><FE><F3><BF><FF><C2><FC><FA>_<FF><FE><CB>^O<9F><CF><FF><FE><FE>/^_<BE><FB><F4><FE>??<FD><F0><E3><8F>^_<CF>^_<FF><FA><FD><F5><A3><BF><FF><F3><FF><F8><A7><8F><DF><FD>
-<F9><C3><F9><F3><98><FD>x9<D2><CB>Ѿ<8D><F4><CD>q<<FE><FC><EA>8<8E>ߟ^?<FD><FA><CB><FF>^]O<92><F1><E4><A7>x<BE>|<FC><E9><E3><97>^O<FF>#<A2><DF><DC>F<94>_<A2>~{<85>sESCQ<96>^Q%^^<D1>oo#*/<E9>^@9**<A2><E7>^T}<FE>
-<F0><F3>#<86>O??<87><94><FB>]D<F5>%u<90><A3>*s4<E8>*<BA>^?f<FD><B1><90>@<86><9A><8C><A7><D3>x<EE><9F><D8>x<FC>^A<F9><E9>2<9E>F<E3><F9><DD>}@<F3>%2H<D0>ض<A8><E3>8^W<B5>N<D1>T^Q<95><B7>,<EA>q^WQ<BC><A4>
-r^T<87>
-...
-```
-
-> 💡 Tip: Probá hacer `curl 'https://macowins-server.herokuapp.com/ventas' -i -H "Accept-Encoding: gzip" | less` para ver mejor el resultado
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/ventas' -i -H "Accept-Encoding: gzip" --compressed
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-Content-Type: application/json; charset=utf-8
-Vary: Accept-Encoding
-Content-Encoding: gzip
-Date: Tue, 21 Apr 2020 13:13:22 GMT
-Connection: keep-alive
-Transfer-Encoding: chunked
-
-[
-  {
-    "id": 1,
-    "producto": {
-      "id": 19,
-      "tipo": "saco",
-      "talle": "L"
-    },
-    "fecha": "1970-02-06T12:00:00.000Z"
-  },
-...
-```
-
-> ✍️ Autoevaluación: ¿Qué hizo el _flag_ `--compressed`?
-
-
-```bash
-$ curl 'https://macowins-server.herokuapp.com/prendas/1' -i -H "Accept-Encoding: gzip"
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Expires: -1
-Content-Type: application/json; charset=utf-8
-Content-Length: 50
-Vary: Accept-Encoding
-Date: Tue, 21 Apr 2020 13:15:39 GMT
-Connection: keep-alive
-
-{
-  "id": 1,
-  "tipo": "pantalon",
-  "talle": 35
-}
-...
-```
-
-> 🤔 Para pensar: ¿Sucedió lo que esperábamos? ¿Por qué puede ser?
-
-## 10. Desde el navegador
+## 7. Desde el navegador
 
 ¡Probemos estas mismas ideas desde el navegador!
 
 > 🏅 Desafío: consultá 4 sitios diferentes y averiguá para todos ellos qué servidor utilizan,
 > si el contenido se transfiere encriptado, y la fecha de expieración del contenido.
 
-## 11. Borrando contenido
+## 8. Borrando contenido
 
 > ✍️ Autoevaluación: ¿qué es un método HTTP?
 
@@ -793,7 +538,7 @@ Connection: keep-alive
 > 🤔 Para pensar: ¿Habrá algo que impida que no borre nada con un DELETE, o que borre algo con un GET?
 
 
-## 12. Creando y actualizando contenido
+## 9. Creando y actualizando contenido
 
 Probemos ahora crear una prenda:
 
@@ -854,7 +599,7 @@ agregándolo en el cuerpo.
 
 > 🏅 Desafío: Intentá hacer POST sobre una venta concreta, como por ejemplo `https://macowins-server.herokuapp.com/prendas/1`. ¿Qué sucede?
 
-## 13. Sobre la semántica de los verbos
+## 10. Sobre la semántica de los verbos
 
 > 🤔 Para pensar: A los métodos HTTP también se les dice verbos. ¿Por qué?
 
@@ -884,7 +629,7 @@ Estas convenciones nos hablan de una semántica para cada uno de los verbos, y e
 > para resolver operaciones que no encajan en otras semánticas. ¿Se te ocurre algún otro ejemplo fuera de HTTP en que pase algo así?
 
 
-## 14. Recursos
+## 11. Recursos
 
 Formalización de REST: organizaremos nuestras rutas, tanto de una API como de **un sitio común y corriente**, en forma de recursos y _colecciones_.
 
@@ -912,7 +657,7 @@ Formalización de REST: organizaremos nuestras rutas, tanto de una API como de *
 
 > 🏋️ Ejercicio: Pongamos a prueba nuestros conocimientos de REST [con este problema](https://docs.google.com/document/d/1lNQERQZuWsve0k7VUVVPtliX9aR6JE0NC8tamYON_9A/edit)
 
-## 15. Paréntesis: servidores y despliegue
+## 12. Paréntesis: servidores y despliegue
 
 > 🤔 Para pensar: ¿Dónde está desplegado QMP? ¿En la máquina de uno de los docentes? ¿En su máquina? ¿Qué problemas tendría ésto?
 
@@ -997,7 +742,7 @@ To https://git.heroku.com/macowins-server.git
    07f9006..aa4b7bd  master -> master
 ```
 
-## 16. Redirecciones
+## 13. Redirecciones
 
 Consultemos al muy conocido busacador `google.com`:
 
@@ -1304,7 +1049,7 @@ Cuando consultamos `/catalogo` nuevamente nos redirige, pero usando un código  
 
 
 
-## 17. Seguridad
+## 14. Seguridad
 
 Miremos más en detalle la ruta que acabamos de descubrir:
 
@@ -1432,7 +1177,7 @@ Connection: keep-alive
 > 🤔 Para pensar: ¿Fue necesario volver a ingresar las credenciales? ¿Por qué?
 
 
-## 18. HTTP es stateless
+## 14. HTTP es stateless
 
 Como acabamos de ver, HTTP es olvidadizo 🐠, ¡y no recuerda que yo nos autenticamos!
 
@@ -1444,7 +1189,7 @@ Como acabamos de ver, HTTP es olvidadizo 🐠, ¡y no recuerda que yo nos autent
 > - `Cookie` y `Set-Cookie`
 
 
-## 19. Negociación de contenido
+## 15. Negociación de contenido
 
 > 💬 Para discutir:
 > - Accept
@@ -1452,7 +1197,7 @@ Como acabamos de ver, HTTP es olvidadizo 🐠, ¡y no recuerda que yo nos autent
 
 
 
-## 20. Requests condicionales
+## 16. Requests condicionales
 
 Pidamos la prenda número 20:
 
@@ -1587,7 +1332,7 @@ Connection: keep-alive
 
 > 🔎 Para investigar: ¿Qué significa la `W/` en los `ETags`?
 
-## 21. Contenido estático y dinámico
+## 17. Contenido estático y dinámico
 
 Consultar: `https://macowins-server.herokuapp.com/`.
 Observar el pie de página
