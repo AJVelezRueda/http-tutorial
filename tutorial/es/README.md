@@ -200,7 +200,7 @@ Veamos otro código de respuesta más, que nos permitirá usar una funcionalidad
 
 ```bash
 >>> r = requests.get('https://macowins-server.herokuapp.com/nueva-funcionalidad-que-a-veces-no-anda-bien')
->> r.headers
+>>> r.headers
 
 {'Server': 'Cowboy', 
 'Connection': 'keep-alive',
@@ -286,7 +286,7 @@ Hagamos un nuevo pedido, pero ahora a una _ruta_ ligeramente diferente:
 
 > 🤔 Para pensar: ¿qué hará `/ventas/2`? ¿`/ventas/`?.
 
-> 🏅 Desafío: hacé `requests.get('https://macowins-server.herokuapp.com/ventas')` y `requests.get('https://macowins-server.herokuapp.com/ventas/2)'` y contrastá el resultado con tu respuesta anterior
+> 🏅 Desafío V: hacé `requests.get('https://macowins-server.herokuapp.com/ventas')` y `requests.get('https://macowins-server.herokuapp.com/ventas/2)'` y contrastá el resultado con tu respuesta anterior
 
 Este listado es muy completo, pero por eso también puede ser engorroso para usar. Quizás podríamos traer sólo una parte así...
 
@@ -348,7 +348,7 @@ Este listado es muy completo, pero por eso también puede ser engorroso para usa
 
 > ✍️ Autoevaluación: ¿qué acabamos de hacer? ¿para qué nos sirvió el `?...=...`?
 
-> 🏅 Desafío: Obtené las remeras.
+> 🏅 Desafío VI: Obtené las remeras.
 
 Es común que las APIs que admiten parámetros soporten más de uno, por ejemplo:
 
@@ -377,7 +377,7 @@ Además, los parámetros además se pueden combinar, utilizando el signo `&` (se
 ]
 ```
 
-> 🏅 Desafío: Obtené las remeras XS
+> 🏅 Desafío VII: Obtené las remeras XS
 
 > ✍️ Autoevaluación: ¿Para qué sirven los parámetros?
 
@@ -397,11 +397,10 @@ Las URIs se componente de:
   * opcionalmente, parámetros
   * opcionalmente, un fragmento, que indica en que sección queremos obtener del recurso que estamos consultando.
 
-Y se ven así: `protocolo://dominio:puerto/ruta#fragmento?parametro1=valor1&parametro2=valor2`. Las URIs son simplemente un formato estandarizado de strings,
-que por sí mismo no significa nada. Por ejemplo `cerebro://recuerdos:3403/recientes#hoy?tema=http` es sólo un string que cumple la estructura de una URI, aunque probablemente
+Y se ven así: `protocolo://dominio:puerto/ruta#fragmento?parametro1=valor1&parametro2=valor2`. Las URIs son simplemente un formato estandarizado de strings,que por sí mismo no significa nada. Por ejemplo `cerebro://recuerdos:3403/recientes#hoy?tema=http` es sólo un string que cumple la estructura de una URI, aunque probablemente
 no sea muy util (o al menos no el año 2020 🧠)
 
-> 🏅 Desafío: decí usando tus palabras qué significa la URI de este ejemplo _cerebral_ 😛.
+> 🏅 Desafío VIII: decí usando tus palabras qué significa la URI de este ejemplo _cerebral_ 😛.
 
 > 🤔 Para pensar: ¿cuál es el protocolo que estamos estudiando? ¿Se observa en las URLs que venimos mencionando?
 
@@ -437,13 +436,11 @@ requests.exceptions.ConnectionError: HTTPConnectionPool(host='google.com', port=
 
 > ✍️ Autoevaluación: ¿Por qué ante problemas de conexión obtenemos errores que no son de HTTP, sino de más bajo nivel?
 
-> ✍️ Autoevaluación: ¿Para qué sirve el flag `--connect-timeout`? Contratá tu respuesta con el lo que dice `curl --help`
+> ✍️ Autoevaluación: ¿Para qué sirve el parámetro `timeout`? 
 
 
-Como vemos esto nos abre una serie de nuevos errores: los errores de conexión, que como vemos pueden deberse por ejemplo a:
+Como se puede ver, los pedidos antes hechos abre una serie de nuevos errores: errores de conexión, que como vemos pueden deberse, por ejemplo, a que el puerto al que estamos intentando conectarnos no es el adecuado o que el dominio no existe en internet.
 
- * el puerto al que estamos intentando conectarnos no es el adecuado
- * el el dominio no existe en internet
 
 > 💬 Para discutir: Pero, ¿qué es un dominio? ¿Qué otra forma tenemos de llegar a una máquina que sea a través de su dominio?
 
