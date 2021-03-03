@@ -444,31 +444,17 @@ Como se puede ver, los pedidos antes hechos abre una serie de nuevos errores: er
 
 > 💬 Para discutir: Pero, ¿qué es un dominio? ¿Qué otra forma tenemos de llegar a una máquina que sea a través de su dominio?
 
-```bash
-$ ping google.com
+```Python
+>>> import os
+>>> hostname = "google.com"
+>>> response = os.system("ping -c 1 " + hostname)
 PING google.com (172.217.172.110) 56(84) bytes of data.
-64 bytes from eze06s02-in-f14.1e100.net (172.217.172.110): icmp_seq=1 ttl=54 time=15.8 ms
-64 bytes from eze06s02-in-f14.1e100.net (172.217.172.110): icmp_seq=2 ttl=54 time=24.5 ms
-64 bytes from eze06s02-in-f14.1e100.net (172.217.172.110): icmp_seq=3 ttl=54 time=24.5 ms
-64 bytes from eze06s02-in-f14.1e100.net (172.217.172.110): icmp_seq=4 ttl=54 time=25.2 ms
-^C
---- google.com ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3005ms
-rtt min/avg/max/mdev = 15.844/22.553/25.276/3.888 ms
-```
+PING google.com (172.217.172.110) 56(84) bytes of data.
+64 bytes from eze06s02-in-f14.1e100.net (172.217.172.110): icmp_seq=1 ttl=116 time=12.8 ms
 
-```bash
-$ ping google.com
-PING google.com (172.217.162.14) 56(84) bytes of data.
-64 bytes from eze04s07-in-f14.1e100.net (172.217.162.14): icmp_seq=1 ttl=54 time=12.9 ms
-64 bytes from eze04s07-in-f14.1e100.net (172.217.162.14): icmp_seq=2 ttl=54 time=27.8 ms
-64 bytes from eze04s07-in-f14.1e100.net (172.217.162.14): icmp_seq=3 ttl=54 time=26.3 ms
-64 bytes from eze04s07-in-f14.1e100.net (172.217.162.14): icmp_seq=4 ttl=54 time=29.8 ms
-^C
 --- google.com ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3005ms
-rtt min/avg/max/mdev = 12.928/24.245/29.843/6.650 ms
-
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 12.843/12.843/12.843/0.000 ms
 ```
 
 > 🤔 Para pensar: ¿por qué Google tiene múltiples IPs? ¿Que ventaja representa para esta empresa y para quienes lo usamos?
@@ -476,8 +462,7 @@ rtt min/avg/max/mdev = 12.928/24.245/29.843/6.650 ms
 > 🏅 Desafío: ¿a través de qué IP accedés a google desde tu computadora?
 
 ## 6. Cabeceras
-
-Antes ya aparecieron. Formalicemos
+Ya estuvimos analizando las partes de un pedido HTTP, ampliemos un poco sobre las cabeceras:
 
 ```
 HTTP/1.1 200 OK
