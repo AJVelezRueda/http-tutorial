@@ -459,10 +459,10 @@ rtt min/avg/max/mdev = 12.843/12.843/12.843/0.000 ms
 
 > 🤔 Para pensar: ¿por qué Google tiene múltiples IPs? ¿Que ventaja representa para esta empresa y para quienes lo usamos?
 
-> 🏅 Desafío: ¿a través de qué IP accedés a google desde tu computadora?
+> 🏅 Desafío IX: ¿a través de qué IP accedés a google desde tu computadora?
 
 ## 6. Cabeceras
-Ya estuvimos analizando las partes de un pedido HTTP, ampliemos un poco sobre las cabeceras:
+Ya estuvimos analizando las partes de un pedido HTTP, ampliemos un poco sobre las cabeceras. Veamos un ejemplo:
 
 ```
 HTTP/1.1 200 OK
@@ -483,7 +483,7 @@ Date: Sun, 19 Apr 2020 20:18:21 GMT
 Connection: keep-alive
 ```
 
-> 📝 Nota: si bien en CURL 'se muestra de esta mantera (que a su vez tiene que ver con cómo funciona HTTP internamente), la primera línea NO se corresponde con una cabecera, sino que es el código de estado del que ya hemos hablado anteriormente.
+> 📝 Nota: si bien en requests 'se muestra de esta mantera (que a su vez tiene que ver con cómo funciona HTTP internamente), la primera línea NO se corresponde con una cabecera, sino que es el código de estado del que ya hemos hablado anteriormente.
 
 Algunas de estas no las entenderemos. Pero las que sí nos dan información relevante:
 
@@ -499,16 +499,15 @@ Algunas de estas no las entenderemos. Pero las que sí nos dan información rele
 
 > 🤔 Para pensar: ¿Cuál fue el `Content-Type` de las respuesta del ejemplo? ¿Por qué devolvió eso?
 
-> 🏅 Desafío: ¿Qué devolverá la página principal (_home_) de nuestro sitio? Averiguá el `Content-Type` de /home
+> 🏅 Desafío X: ¿Qué devolverá la página principal (_home_) de nuestro sitio? Averiguá el `Content-Type` de /home
 
 > ✍️ Autoevaluación: ¿Para qué sirven las cabeceras? Mencioná al menos dos.
-
 
 ## 7. Desde el navegador
 
 ¡Probemos estas mismas ideas desde el navegador!
 
-> 🏅 Desafío: consultá 4 sitios diferentes y averiguá para todos ellos qué servidor utilizan,
+> 🏅 Desafío XI: consultá 4 sitios diferentes y averiguá para todos ellos qué servidor utilizan,
 > si el contenido se transfiere encriptado, y la fecha de expieración del contenido.
 
 ## 8. Borrando contenido
@@ -517,23 +516,23 @@ Algunas de estas no las entenderemos. Pero las que sí nos dan información rele
 
 > 🤔 Para pensar: ¿es correcto que permitamos que cualquiera borre contenido?
 
+> 🤔 Para pensar: Estuvimos usando un método específico de request GET, que servía para... ¿Para qué servía? ¿Qué crees que hará DELETE?
+
 > 🤔 Para pensar: ¿Habrá algo que impida que no borre nada con un DELETE, o que borre algo con un GET?
 
 
 ## 9. Creando y actualizando contenido
 
-Probemos ahora crear una prenda:
+Ahora probemos crear una prenda... para esto es lógico pensar que cierta información debe ser enviada al servidor ¿Pero, qué información? Bueno, probemos mandando un número identificador (id):
 
-```bash
-$ curl -XPOST 'https://macowins-server.herokuapp.com/prendas/'
-{
-  "id": 21
-}
+```Python
+>>> data = {'id': 21}
+>>>  r = requests.post('https://macowins-server.herokuapp.com/prendas/', data=data)
 ```
 
-Como vemos, se creó una prenda con el id `21`, y lo que obtenemos como respuesta es el _recurso_ creado.
+Podemos ver que se creó una prenda con el id `21`, si verificamos la respuesta del _recurso_ creado.
 
-> 🏅 Desafío: ¿qué código de estado devuelve cuando un _recurso_ es creado? Averigualo
+> 🏅 Desafío XII: ¿qué código de estado devuelve cuando un _recurso_ es creado? Averigualo
 
 > 🤔 Para pensar: ¿Nos es realmente útil crear una prenda sin especificar más nada?
 
@@ -541,35 +540,36 @@ Como vemos, se creó una prenda con el id `21`, y lo que obtenemos como respuest
 
 Pero para que las cosas sean más interesantes, vamos a especificar _el cuerpo_ del pedido HTTP, con el contenido de la prenda que queremos crear.
 
-```bash
-curl -XPOST 'https://macowins-server.herokuapp.com/prendas/' -i --data '{ "tipo": "chomba", "talle": "XS" }'
+```python
+>>> data =  { "tipo": "chomba", "talle": "XS" }
+>>>  r = requests.post('https://macowins-server.herokuapp.com/prendas', data=data)
+
 {
   "{ \"tipo\": \"chomba\", \"talle\": \"XS\" }": "",
   "id": 22
 }
 ```
 
-> ✍️ Autoevaluación: ¿para qué sirve la opción `--data`?
+> ✍️ Autoevaluación: ¿para qué sirve el parámetro `data`?
 
 > 🤔 Para pensar: Hmm, funcionó, pero ¿creó el contenido que queríamos? ¿Por qué?
 
 
-El servidor de QMP necesita que le especifiquemos el tipo de contenido, para que cuando creemos algo sepa de qué tipo de cosa estamos hablando. Usemos para eso la
-cabecera que vimos anteriormente: `Content-Type`
+El servidor de QMP necesita que le especifiquemos el tipo de contenido, para que cuando creemos algo sepa de qué tipo de cosa estamos hablando. Usemos para eso la cabecera que vimos anteriormente: `Content-Type`
 
 
-```bash
-curl -XPOST 'https://macowins-server.herokuapp.com/prendas/' --data '{ "tipo": "chomba", "talle": "XS" }' -H 'Content-Type: application/json'
-{
-  "tipo": "chomba",
-  "talle": "XS",
-  "id": 25
-}
+```python
+>>> import json, requests
+>>> headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+>>> data =  { "tipo": "chomba", "talle": "XS" }
+>>> r = requests.post('https://macowins-server.herokuapp.com/prendas/', data=json.dumps(data), headers=headers)
+>>> r.status_code
+201
 ```
 
 > 🤔 Para pensar: ¿por qué no especificamos el ID en el cuerpo?
 
-> 🏅 Desafío: Nos quedaron prendas con ids `21` y `22` que no nos sirve; ¡borralas!
+> 🏅 Desafío: Nos quedaron prendas con ids que no nos sirven; ¡borralas!
 
 > 📝 Nota: el servidor de QMP aceptó la prenda aún sin especificar el tipo de contenido, pero la guardó de una forma incorrecta. Otros servidores podrían haber hecho un intento por descubrir el tipo de
 > todas maneras, o haber rechazado el pedido completamente, con un error de la familia `400`.
