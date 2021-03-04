@@ -51,12 +51,6 @@ Este conjunto de reglas de comunicación, implícitas o explícitas, se denomina
   * [9. Sobre la semántica de los verbos](#13-sobre-la-semantica-de-los-verbos)
   * [10. Recursos](#14-recursos)
   * [11. Paréntesis: servidores y despliegue](#15-parentesis-servidores-y-despliegue)
-  * [12. Redirecciones](#16-redirecciones)
-  * [13. Seguridad](#17-seguridad)
-  * [14. HTTP es stateless](#18-http-es-stateless)
-  * [15. Negociación de contenido](#19-negociacion-de-contenido)
-  * [16. Requests condicionales](#20-requests-condicionales)
-  * [17. Contenido estático y dinámico](#21-contenido-estatico-y-dinamico)
 
 > 🏁 Antes de empezar, repasemos: ¿qué es una arquitectura cliente-servidor? ¿cómo funciona? ¿Cuál es el cliente por antomasia de la Web?
 >
