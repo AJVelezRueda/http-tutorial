@@ -1,6 +1,6 @@
 # Tutorial WEB
 [Contenido del recorrido](#1-Web)
-  * [1. Internte](#1-interntet)
+  * [1. Internet](#1-interntet)
   * [2. La Web](#2-web)
   * [3. Introducción al concepto de CLoud Computing](#3-Cloud-computing)
   * [4. Protocolos de comunicación](#4-protocolos)
