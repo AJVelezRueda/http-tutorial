@@ -144,11 +144,17 @@ Veremos que lo que nos devuelve no es HTML, sino un formato llamado JSON.
 
 Como dijimos antes, una conversación no se trata de la simple enunciación de palabras al azar. Existe un intercambio regulado o normado, donde es de esperar una estructura simple de enunciaciones/preguntas y respuestas. 
 
+Veamos el sigueinte mensaje que también recibimos de nuestro pedido:
+
+```python
+>>> r.status_code
+```
+
 > En este caso ¿de qué tipo de respuesta se trata? Si tuvieras que expresarlo en emojis ¿Qué emoji es el 400?
 
 > ✍️ Autoevaluación: ¿Para qué sirve el método `headers`? ¿Que nos permitió? 
 
-> 🏅 Desafío III: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué te devuelve el método headers? 
+> 🏅 Desafío III: contrastá con lo que sucede al hacer get de `'https://macowins-server.herokuapp.com/prendas/1'` ¿Qué te devuelve el método headers? ¿Qué status_code obtenes?
 
 <details>
   <summary>Respuesta</summary>
