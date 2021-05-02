@@ -144,7 +144,7 @@ Veremos que lo que nos devuelve no es HTML, sino un formato llamado JSON.
 
 Como dijimos antes, una conversación no se trata de la simple enunciación de palabras al azar. Existe un intercambio regulado o normado, donde es de esperar una estructura simple de enunciaciones/preguntas y respuestas. 
 
-Veamos el sigueinte mensaje que también recibimos de nuestro pedido:
+Veamos el sigueinte mensaje que también recibimos como respuesta a nuestro pedido:
 
 ```python
 >>> r.status_code
